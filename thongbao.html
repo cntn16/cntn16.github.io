@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Joli Admin - Responsive Bootstrap Admin Template</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+</head>
+
+    <body>
+        <!-- START PAGE CONTAINER -->
+        <div class="page-container page-navigation-top-fixed">
+
+            <div class="page-sidebar page-sidebar-fixed scroll">
+    <ul class="x-navigation">
+        <li class="xn-logo">
+            <a href="/index.html">Tittle</a>
+            <a href="#" class="x-navigation-control"></a>
+        </li>
+        <li class="xn-title">Navigation</li>
+        <li>
+            <a href="/index.html"><span class="fa fa-tasks"></span> <span class="xn-text">Deadline</span></a>
+        </li>
+        <li>
+            <a href="/thongbao.html"><span class="fa fa-bell"></span> <span class="xn-text">Thông báo lớp</span></a>
+        </li>
+        <li>
+            <a href="/lichthi.html"><span class="fa fa-calendar"></span> <span class="xn-text">Lịch thi</span></a>
+        </li>
+        <li>
+            <a href="/doan.html"><span class="fa fa-desktop"></span> <span class="xn-text">Hoạt động đoàn</span></a>
+        </li>
+        <li class="xn-openable">
+            <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Hướng dẫn làm bài</span></a>
+            <ul>
+                <li><a href="/blog/nmlt.html">Nhập môn Lập trình</a></li>
+                <li><a href="/blog/trr.html">Toán rời rạc</a></li>
+                <li><a href="/blog/vtp1b.html">Vi tích phân 1B</a></li>
+                <li><a href="/blog/av1.html">Anh văn 1</a></li>
+                <li><a href="/blog/av2.html">Anh văn 2</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+            <!-- PAGE CONTENT -->
+            <div class="page-content">
+
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+    <!-- TOGGLE NAVIGATION -->
+    <li class="xn-icon-button">
+        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+    </li>
+    <!-- TASKS -->
+    <li>
+        <a href="#"><span class="fa fa-arrow-left"></span></a>
+    </li>
+    <li class="xn-icon-button pull-right">
+        <a href="#"><span class="fa fa-bell"></span></a>
+        <div class="informer informer-warning">3</div>
+        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <span class="label label-warning">3 thông báo mới</span>
+                </div>
+            </div>
+
+            <div class="panel-body list-group scroll" style="height: 200px;">
+
+                <a class="list-group-item" href="#">
+                    <strong>XYZ vừa thêm deadline</strong><br/>
+                    <small class="text-muted">XYZ - 3 phút trước</small>
+                </a>
+
+                <a class="list-group-item" href="#">
+                    <strong>ABC vừa thông báo</strong><br/>
+                    <small class="text-muted">ABC - 10 phút trước</small>
+                </a>
+
+                <a class="list-group-item" href="#">
+                    <strong>XYZ vừa thêm deadline</strong><br/>
+                    <small class="text-muted">XYZ - 3 phút trước</small>
+                </a>
+            </div>
+            <div class="panel-footer text-center">
+                <a href="pages-tasks.html">Xem tất cả thông báo</a>
+            </div>
+        </div>
+    </li>
+    <!-- END TASKS -->
+</ul>
+
+
+
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb push-down-0">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Thông báo</li>
+                </ul>
+                <!-- END BREADCRUMB -->                                                
+
+                <!-- START CONTENT FRAME -->
+                <div class="content-frame">     
+                    <!-- START CONTENT FRAME TOP -->
+                    <div class="content-frame-top">                        
+                        <div class="page-title">                    
+                            <h2>Thông báo</h2>
+                        </div>                                                
+                        <div class="pull-right">
+                            <button class="btn btn-default content-frame-right-toggle"><span class="fa fa-bars"></span></button>
+                        </div>                                
+                    </div>                    
+                    <div class="content-frame-right">
+                        <div class="form-group">
+                            <h4>Thêm thông báo:</h4>
+                            <input type="text" class="form-control push-down-10" placeholder="Tên"/>
+                            <textarea class="form-control push-down-10" id="new_task" rows="4" placeholder="Text here..."></textarea>                            
+                            <button class="btn btn-primary" id="add_new_task"><span class="fa fa-edit"></span> Add</button>
+                        </div>                        
+                    </div>
+                    <!-- END CONTENT FRAME TOP -->
+
+                    <!-- START CONTENT FRAME BODY -->
+                    <div class="content-frame-body content-frame-body-left">
+
+                        <div class="row push-up-10">
+
+                            <div class="tasks" id="tasks">
+                                <div class="task-item task-primary">                                    
+                                    <div class="task-footer">
+                                        <div class="pull-left">Hồng Hạnh - <span class="fa fa-clock-o"></span> 21 giờ 15/11</div>                                    
+                                        <div class="pull-right"><a href="https://courses.fit.hcmus.edu.vn/mod/assign/view.php?id=34755"><span class="fa fa-chain"></span></a></div>
+                                        <div class="pull-right"><a href="#"><span class="fa fa-edit"></span></a></div>
+                                    </div>
+                                    <div class="task-text">
+                                        Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tasks" id="tasks">
+                                <div class="task-item task-primary">                                    
+                                    <div class="task-footer">
+                                        <div class="pull-left">Hồng Hạnh - <span class="fa fa-clock-o"></span> 21 giờ 15/11</div>                                    
+                                        <div class="pull-right"><a href="https://courses.fit.hcmus.edu.vn/mod/assign/view.php?id=34755"><span class="fa fa-chain"></span></a></div>
+                                        <div class="pull-right"><a href="#"><span class="fa fa-edit"></span></a></div>
+                                    </div>
+                                    <div class="task-text">
+                                        Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                        Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                        Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                        Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                        Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                        Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                        Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                        <div class="collapse" id="xxx">
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                            Mấy bạn ơi, ai còn giữ giấy pông thì mai mang cho mình gấp nha nha nha<br/>
+                                        </div>
+                                        <div class="pull-right"><a tab-index="0" data-toggle="collapse" data-target="#xxx">Xem thêm >></a></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>                            
+
+                    </div>
+                    <!-- END CONTENT FRAME BODY -->
+
+                </div>
+                <!-- END CONTENT FRAME -->
+
+            </div>            
+            <!-- END PAGE CONTENT -->
+        </div>
+        <!-- END PAGE CONTAINER -->
+
+        <!-- START SCRIPTS -->
+<!-- START PLUGINS -->
+<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>
+<!-- END PLUGINS -->
+
+<!-- START THIS PAGE PLUGINS-->
+<script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
+<script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+
+<script type="text/javascript" src="js/plugins/moment.min.js"></script>
+<script type="text/javascript" src="js/plugins/bootstrap/bootstrap-select.js"></script>
+<!-- END THIS PAGE PLUGINS-->
+
+<!-- START TEMPLATE -->
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/actions.js"></script>
+<!-- END TEMPLATE -->
+<!-- END SCRIPTS -->
+
+    </body>
+</html>
