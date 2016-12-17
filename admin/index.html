@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="myApp">
     <head>
-    <title>Title</title>
+    <title>CNTN16</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,6 +9,30 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
     <link rel="stylesheet" type="text/css" id="theme" href="/css/theme-default.css"/>
+    <link rel="stylesheet" type="text/css" id="theme" href="/css/bootstrap/bootstrap-datetimepicker.min.css"/>
+    <script type="text/javascript" src="/js/plugins/jquery/jquery.min.js"></script>
+	<!-- Angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyCN6FV9-KGgl0cLkbCekh4PGwrbqZtFp8o",
+	    authDomain: "cttn-6e4ca.firebaseapp.com",
+	    databaseURL: "https://cttn-6e4ca.firebaseio.com",
+	    storageBucket: "cttn-6e4ca.appspot.com",
+	    messagingSenderId: "269612716697"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+
+	<!-- AngularFire -->
+	<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
+    <script type="text/javascript" src="js/app.js"></script>
 </head>
 
     <body>
@@ -18,21 +42,21 @@
             <div class="page-sidebar page-sidebar-fixed scroll">
     <ul class="x-navigation">
         <li class="xn-logo">
-            <a href="/index.html">Tittle</a>
+            <a href="/index.html">CNTN16</a>
             <a href="#" class="x-navigation-control"></a>
         </li>
         <li class="xn-title">Navigation</li>
         <li>
-            <a href="/index.html"><span class="fa fa-tasks"></span> <span class="xn-text">Deadline</span></a>
+            <a href="#/deadline"><span class="fa fa-tasks"></span> <span class="xn-text">Deadline</span></a>
         </li>
         <li>
-            <a href="/thongbao.html"><span class="fa fa-bell"></span> <span class="xn-text">Thông báo lớp</span></a>
+            <a href="thongbao.html"><span class="fa fa-bell"></span> <span class="xn-text">Thông báo lớp</span></a>
         </li>
         <li>
-            <a href="/lichthi.html"><span class="fa fa-calendar"></span> <span class="xn-text">Lịch thi</span></a>
+            <a href="lichthi.html"><span class="fa fa-calendar"></span> <span class="xn-text">Lịch thi</span></a>
         </li>
         <li>
-            <a href="/hddoan.html"><span class="fa fa-desktop"></span> <span class="xn-text">Hoạt động đoàn</span></a>
+            <a href="hddoan.html"><span class="fa fa-desktop"></span> <span class="xn-text">Hoạt động đoàn</span></a>
         </li>
         <li class="xn-openable">
             <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Hướng dẫn làm bài</span></a>
@@ -54,11 +78,7 @@
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
     <!-- TOGGLE NAVIGATION -->
     <li class="xn-icon-button">
-        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
-    </li>
-    <!-- TASKS -->
-    <li>
-        <a href="#"><span class="fa fa-arrow-left"></span></a>
+        <a class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
     </li>
     <li class="xn-icon-button pull-right">
         <a href="#"><span class="fa fa-bell"></span></a>
@@ -94,121 +114,7 @@
     </li>
     <!-- END TASKS -->
 </ul>
-
-
-
-                <!-- START BREADCRUMB -->
-                <ul class="breadcrumb push-down-0">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Deadline</li>
-                </ul>
-                <!-- END BREADCRUMB -->
-
-                <!-- START CONTENT FRAME -->
-                <div class="content-frame">
-                    <!-- START CONTENT FRAME TOP -->
-                    <div class="content-frame-top">
-                        <div class="page-title">
-                            <h2>Deadline</h2>
-                        </div>
-                        <div class="pull-right">
-                            <button class="btn btn-default content-frame-right-toggle"><span class="fa fa-bars"></span></button>
-                        </div>
-                        <div class="pull-right" style="width: 100px; margin-right: 5px;">
-                            <select class="form-control select">
-                                <option>All</option>
-                                <option>NMLT</option>
-                                <option>NM CNTT 1</option>
-                                <option>AV 1</option>
-                                <option>AV 2</option>
-                            </select>
-                        </div>
-                        <div class="pull-right" style="margin-right: 5px;">Môn: </div>
-                    </div>
-                    <div class="content-frame-right">
-                        <h4>Thêm Deadline:</h4>
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control push-down-10" placeholder="Title"/>
-                                <textarea class="form-control push-down-10" id="new_task" rows="4" placeholder="Your task text here..."></textarea>
-                                <select class="form-control push-down-10 select">
-                                    <option>NMLT</option>
-                                    <option>NM CNTT 1</option>
-                                    <option>AV 1</option>
-                                    <option>AV 2</option>
-                                </select>
-                                <input type="text" class="form-control push-down-10" placeholder="Link nộp"/>
-                                <input type="text" class="form-control push-down-10" placeholder="Hạn nộp"/>
-                                <button class="btn btn-primary" id="add_new_task"><span class="fa fa-edit"></span> Add</button>
-                            </div>
-                        </form>
-
-                        <h4>Thêm môn:</h4>
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control push-down-10" placeholder="Tên môn"/>
-                                <input type="text" class="form-control push-down-10" placeholder="Mã môn"/>
-                                <button class="btn btn-primary" id="add_new_task"><span class="fa fa-edit"></span> Add</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- END CONTENT FRAME TOP -->
-
-                    <!-- START CONTENT FRAME BODY -->
-                    <div class="content-frame-body content-frame-body-left">
-
-                        <div class="row push-up-10">
-                            <div class="tasks" id="tasks">
-                                <div class="task-item task-primary">
-                                    <div class="task-footer">
-                                        <div class="pull-left"><span class="fa fa-clock-o"></span> 15 giờ 34 phút - Nhập môn lập trình</div>
-                                        <div class="pull-right"><a href="https://courses.fit.hcmus.edu.vn/mod/assign/view.php?id=34755"><span class="fa fa-chain"></span></a></div>
-                                        <div class="pull-right"><a href="#"><span class="fa fa-edit"></span></a></div>
-                                    </div>
-                                    <div class="task-text">
-                                        <h3>Nộp bài tập lý thuyết tuần 3...</h3>
-                                        * Nội dung: bài tập 4.2, 4.4c, 4.4d và 4.5 trong slides 4.<br/>
-                                        <br/>
-                                        * Quy định:<br/>
-                                        - Bài tập lý thuyết thực hiện cá nhân.<br/>
-                                        - Bài nộp chỉ bao gồm các files mã nguồn (.h, .cpp, .c), xóa đi các thư mục và tập tin không cần thiết như: Debug, Release, ...<br/>
-                                        - Bài nộp nén thành 1 file duy nhất đặt tên BT&lt;STT tuần&gt;-&lt;MSSV&gt;.zip, ví dụ: sinh viên 1612001 sẽ nộp bài tập lý thuyết tuần 1 với tên file là BT1-1612001.zip.<br/>
-                                        - Các trường hợp giống bài nhau sẽ bị 0 điểm tất cả.<br/>
-                                        - Các trường hợp nộp bài trễ được thực hiện qua email cho giáo viên và sẽ bị trừ 1/2 số điểm.<br/>
-                                        - Hạn cuối: 23h55, thứ hai, ngày 14/11/2016.<br/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3>Đã quá hạn</h3>
-
-                            <div class="tasks" id="tasks_completed">
-                                <div class="task-item task-danger task-complete">
-                                    <div class="task-footer">
-                                        <div class="pull-left"><span class="fa fa-clock-o"></span> 15 giờ 34 phút - Nhập môn lập trình</div>
-                                        <div class="pull-right"><a href="https://courses.fit.hcmus.edu.vn/mod/assign/view.php?id=34755"><span class="fa fa-chain"></span></a></div>
-                                        <div class="pull-right"><a href="#"><span class="fa fa-edit"></span></a></div>
-                                    </div>
-                                    <div class="task-text">
-                                        <h3>Nộp bài tập lý thuyết tuần 3...</h3>
-                                        * Nội dung: bài tập 4.2, 4.4c, 4.4d và 4.5 trong slides 4.<br/>
-                                        <br/>
-                                        * Quy định:<br/>
-                                        - Bài tập lý thuyết thực hiện cá nhân.<br/>
-                                        - Bài nộp chỉ bao gồm các files mã nguồn (.h, .cpp, .c), xóa đi các thư mục và tập tin không cần thiết như: Debug, Release, ...<br/>
-                                        - Bài nộp nén thành 1 file duy nhất đặt tên BT&lt;STT tuần&gt;-&lt;MSSV&gt;.zip, ví dụ: sinh viên 1612001 sẽ nộp bài tập lý thuyết tuần 1 với tên file là BT1-1612001.zip.<br/>
-                                        - Các trường hợp giống bài nhau sẽ bị 0 điểm tất cả.<br/>
-                                        - Các trường hợp nộp bài trễ được thực hiện qua email cho giáo viên và sẽ bị trừ 1/2 số điểm.<br/>
-                                        - Hạn cuối: 23h55, thứ hai, ngày 14/11/2016.<br/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CONTENT FRAME BODY -->
-
-                </div>
-                <!-- END CONTENT FRAME -->
+		<ng-view></ng-view>
 
             </div>
             <!-- END PAGE CONTENT -->
@@ -216,9 +122,10 @@
         <!-- END PAGE CONTAINER -->
         <!-- START SCRIPTS -->
 <!-- START PLUGINS -->
-<script type="text/javascript" src="/js/plugins/jquery/jquery.min.js"></script>
+
 <script type="text/javascript" src="/js/plugins/jquery/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/js/plugins/bootstrap/bootstrap.min.js"></script>
+
 <!-- END PLUGINS -->
 
 <!-- START THIS PAGE PLUGINS-->
@@ -227,12 +134,14 @@
 
 <script type="text/javascript" src="/js/plugins/moment.min.js"></script>
 <script type="text/javascript" src="/js/plugins/bootstrap/bootstrap-select.js"></script>
+<script type="text/javascript" src="/js/plugins/bootstrap/bootstrap-datetimepicker.min.js"></script>
 <!-- END THIS PAGE PLUGINS-->
 
 <!-- START TEMPLATE -->
 <script type="text/javascript" src="/js/plugins.js"></script>
 <script type="text/javascript" src="/js/actions.js"></script>
 <!-- END TEMPLATE -->
+
 <!-- END SCRIPTS -->
 
     </body>
