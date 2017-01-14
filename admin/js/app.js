@@ -16,7 +16,7 @@ var app = angular.module("myApp",["ngRoute", "firebase"])
                     //
                     // Them mon hoc moi
                     $scope.addMonHoc = function(){
-                        if ($scope.newTenMonHoc !="" && $scope.newMaMonHoc !="")
+                        if ($scope.newTenMonHoc !=null && $scope.newMaMonHoc !=null)
                             $scope.dataMonHoc.$add({
                                 tenmonhoc : $scope.newTenMonHoc,
                                 mamonhoc : $scope.newMaMonHoc
@@ -26,7 +26,7 @@ var app = angular.module("myApp",["ngRoute", "firebase"])
                                  $scope.newTenMonHoc = "";
                                  $scope.newMaMonHoc = "";
                                 // $scope.dataMonHoc.$indexFor(id);
-                                alert("Them mon hoc thanh cong");
+                                //alert("Them mon hoc thanh cong");
                             }).catch(function(err){
                                 alert("Loi");
                                 console.error(err);
@@ -34,35 +34,59 @@ var app = angular.module("myApp",["ngRoute", "firebase"])
                         else
                             alert("Gia tri khong duoc rong");
                     }
+                    $scope.delMonHoc = function(monhoc){
+                        if (confirm("Chắc chưa ông nội?")) {
+                            $scope.dataMonHoc.$remove(monhoc).then(function(ref){
+                               // alert("Xoa mon hoc thanh cong");
+                            }).catch(function(err){
+                                    alert("Loi");
+                                    console.error(err);
+                                })
+                        }
+                    }
                     // Them Deadline
-                    $scope.dataDeadline = $firebaseArray(ref.child("deadline"));
+                    $scope.RefDeadline = ref.child("deadline")
+                    $scope.dataDeadline = $firebaseArray(ref.child("deadline"))
+                    
+                    $scope.getFirebaseArray = function(refData, child){
+                        return $scope.dataDeadline = $firebaseArray(refData.child(child));
+                    }
+                    $scope.delDeadline = function(data, child){
+                        if (confirm("Chắc chưa ông nội?")) {
+                            data.$remove(child).then(function(ref){
+                               // alert("Xoa mon hoc thanh cong");
+                            }).catch(function(err){
+                                    alert("Loi");
+                                    console.error(err);
+                                })
+                        }
+                    }
                     $scope.addDeadline = function(){
-                        $scope.newDeadLine_HanNop = $("#newDeadLine_HanNop").val();
-                        if ($scope.newDeadLine_TieuDe != null && $scope.newDeadLine_NoiDung != null && 
-                                $scope.newDeadLine_IdMonHoc != "" && $scope.newDeadLine_LinkNop != null && 
-                                $scope.newDeadLine_HanNop != null )
-                        {
-                            $scope.newDeadline = $firebaseArray(ref.child("deadline/"+$scope.newDeadLine_IdMonHoc));
-                            $scope.newDeadline.$add({
-                                hannop: $scope.newDeadLine_HanNop,
-                                tieude : $scope.newDeadLine_TieuDe,
-                                noidung: $scope.newDeadLine_NoiDung,
-                                linknop: $scope.newDeadLine_LinkNop                                
-                            }).then(function(ref){
-                                alert("Them Deadline thanh cong");
-                                //$scope.newDeadLine_HanNop = "";
-                                 $("#newDeadLine_HanNop").val("");
-                                $scope.newDeadLine_TieuDe = "";
-                                $scope.newDeadLine_NoiDung = "";
-                                $scope.newDeadLine_LinkNop = "";
+                    	if ($scope.newTieudeDeadline != null && $scope.newNoiDungDeadline != null && $scope.newDeadLine_IdMonHoc != null
+                    		&& $scope.newLinknopDeadline != null && $scope.newNgaynopDeadline != null && $scope.newGionopDeadline != null){
+                    		newDeadline = $firebaseArray(ref.child("deadline/" + $scope.newDeadLine_IdMonHoc))
+                    		newDeadline.$add({
+                    			tieude : $scope.newTieudeDeadline,
+                    			noidung: $scope.newNoiDungDeadline,
+                    			linknop: $scope.newLinknopDeadline,
+                    			gionop: $scope.newGionopDeadline,
+                    			ngaynop: $scope.newNgaynopDeadline
+                    		}).then(function(ref){
+                                var id=ref.key;
+                                 console.log("added record with id " + id);
+                                 $scope.newTieudeDeadline = "";
+                                 $scope.newNoiDungDeadline ="";
+                                 $scope.newLinknopDeadline="";
+                                 $scope.newNgaynopDeadline="";
+                                 $scope.newGionopDeadline="";
                             }).catch(function(err){
                                 alert("Loi");
-                                console.log(err);
+                                console.error(err);
                             })
                         }
-                        else alert("Khong duoc de gia tri trong");
-                    }
-
+                        else
+                            alert("Gia tri khong duoc rong");
+                    	}
                     /*$scope.data.$loaded()
                       .then(function() {
                         console.log($scope.data);

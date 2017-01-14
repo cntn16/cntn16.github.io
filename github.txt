@@ -1,0 +1,4 @@
+git add --all
+git commit -m "ghi ch? trong dây"
+git push
+push k dc thì thêm --force

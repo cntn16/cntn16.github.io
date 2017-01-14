@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>CNTN16</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/vendor/metisMenu/metisMenu.min.css">
+        
+        <link rel="stylesheet" href="/css/sb-admin-2.css">
+        <link rel="stylesheet" href="/css/theme.css">
+        <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">CNTN16</a>
+    </div>
+
+    <ul class="nav navbar-top-links navbar-right">
+        <li class="dropdown pull-right">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-bell fa-fw"></i> 2
+            </a>
+            <ul class="dropdown-menu dropdown-alerts">
+                <li>
+                    <a href="#">
+                        <div>ASDF đã thêm deadline
+                            <span class="pull-right text-muted small">4 phút trước</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#">
+                        <div>
+                            ABC vừa thông báo
+                            <span class="pull-right text-muted small">12 phút trước</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="#">
+                        <strong>Xem tất cả</strong>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                <li>
+                    <a href="index.html"><span class="fa fa-tasks"></span> <span class="xn-text">Deadline</span></a>
+                </li>
+                <li>
+                    <a href="thongbao.html"><span class="fa fa-bell"></span> <span class="xn-text">Thông báo lớp</span></a>
+                </li>
+                <li>
+                    <a href="lichthi.html"><span class="fa fa-calendar"></span> <span class="xn-text">Lịch thi</span></a>
+                </li>
+                <li>
+                    <a href="hddoan.html"><span class="fa fa-desktop"></span> <span class="xn-text">Hoạt động đoàn</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+            <div id="page-wrapper" style="padding-top: 10px; margin-top: 51px;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3>Deadline</h3>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <a data-toggle="collapse" href="#collapse1">Thêm môn</a>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body">
+            <form>
+                <div class="form-group">
+                    <label for="title">Tên môn:</label>
+                    <input type="text" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="content">Mã môn:</label>
+                    <textarea class="form-control" rows="5" id="code"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Thêm</button>
+                <button class="btn btn-warning">Hủy</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <a data-toggle="collapse" href="#collapse2">Thêm deadline</a>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+            <form>
+                <div class="form-group">
+                    <label for="title">Tiêu đề:</label>
+                    <input type="text" class="form-control" id="title">
+                </div>
+                <div class="form-group">
+                    <label for="content">Nội dung:</label>
+                    <textarea class="form-control" rows="5" id="content"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="sel1">Môn:</label>
+                    <select class="form-control" id="sel1">
+                        <option>CNTT1</option>
+                        <option>AV2</option>
+                        <option>AV1</option>
+                        <option>NMLT</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="link">Link nộp:</label>
+                    <input type="text" class="form-control" id="link">
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="link">Ngày nộp:</label>
+                            <input type="text" class="form-control" id="day">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="link">Giờ nộp:</label>
+                            <input type="text" class="form-control" id="time">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Thêm</button>
+                <button class="btn btn-warning">Hủy</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Sửa deadline
+    </div>
+    <div class="panel-body">
+        <form>
+            <div class="form-group">
+                <label for="title">Tiêu đề:</label>
+                <input type="text" class="form-control" id="title">
+            </div>
+            <div class="form-group">
+                <label for="content">Nội dung:</label>
+                <textarea class="form-control" rows="5" id="content"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="sel1">Môn:</label>
+                <select class="form-control" id="sel1">
+                    <option>CNTT1</option>
+                    <option>AV2</option>
+                    <option>AV1</option>
+                    <option>NMLT</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="link">Link nộp:</label>
+                <input type="text" class="form-control" id="link">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="link">Ngày nộp:</label>
+                        <input type="text" class="form-control" id="day">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="link">Giờ nộp:</label>
+                        <input type="text" class="form-control" id="time">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Sửa</button>
+            <button class="btn btn-warning">Hủy</button>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="fa fa-clock-o"></span> 15 giờ 34 phút - Nhập môn lập trình
+        <div class="pull-right"><a href="https://courses.fit.hcmus.edu.vn/mod/assign/view.php?id=34755"><span class="fa fa-chain"></span></a></div>
+        <div class="pull-right"><a href="#"><span class="fa fa-edit" style="margin-right:0.5em;"></span></a></div>
+    </div>
+    <div class="panel-body">
+        <h3>Nộp bài tập lý thuyết tuần 3...</h3>
+        * Nội dung: bài tập 4.2, 4.4c, 4.4d và 4.5 trong slides 4.<br/>
+        <br/>
+        * Quy định:<br/>
+        - Bài tập lý thuyết thực hiện cá nhân.<br/>
+        - Bài nộp chỉ bao gồm các files mã nguồn (.h, .cpp, .c), xóa đi các thư mục và tập tin không cần thiết như: Debug, Release, ...<br/>
+        - Bài nộp nén thành 1 file duy nhất đặt tên BT&lt;STT tuần&gt;-&lt;MSSV&gt;.zip, ví dụ: sinh viên 1612001 sẽ nộp bài tập lý thuyết tuần 1 với tên file là BT1-1612001.zip.<br/>
+        - Các trường hợp giống bài nhau sẽ bị 0 điểm tất cả.<br/>
+        - Các trường hợp nộp bài trễ được thực hiện qua email cho giáo viên và sẽ bị trừ 1/2 số điểm.<br/>
+        - Hạn cuối: 23h55, thứ hai, ngày 14/11/2016.<br/>
+    </div>
+    <div class="panel-footer">
+        <a href="chitietdeadline.html">Chi tiết</a>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/vendor/jquery/jquery.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/vendor/metisMenu/metisMenu.min.js"></script>
+        <script src="/js/sb-admin-2.js"></script>
+        <script src="/js/theme.js"></script>
+        
+    </body>
+</html>

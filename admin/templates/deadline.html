@@ -1,124 +1,167 @@
-<div ng-controller="deadlineController">
-                <!-- START BREADCRUMB -->
-                <ul class="breadcrumb push-down-0">
-                    <li><a href="#/deadline">Home</a></li>
-                    <li class="active">Deadline</li>
-                </ul>
-                <!-- END BREADCRUMB -->
 
-                <!-- START CONTENT FRAME -->
-                <div class="content-frame">
-                    <!-- START CONTENT FRAME TOP -->
-                    <div class="content-frame-top">
-                        <div class="page-title">
-                            <h2>Deadline</h2>
+            <div id="page-wrapper" style="padding-top: 10px; margin-top: 51px;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3>Deadline</h3>
+
+						<div class="panel panel-success">
+						    <div class="panel-heading">
+						     <a data-toggle="collapse" href="#collapse1">Môn học</a>
+						    </div>
+						    <div id="collapse1" class="panel-collapse collapse">
+						        <div class="panel-body">
+						            <form>
+						                <div class="form-group">
+						                    <label for="title">Tên môn:</label>
+						                    <input type="text" class="form-control" ng-model="newTenMonHoc">
+						                </div>
+						                <div class="form-group">
+						                    <label for="content">Mã môn:</label>
+						                    <input type="text" class="form-control" ng-model="newMaMonHoc">
+						                </div>
+						                <button type="submit" class="btn btn-primary" ng-click="addMonHoc()">Thêm</button>
+						                <button class="btn btn-warning">Hủy</button>
+						            </form>
+						            <table class="table table-striped table-hover" width="100%" cellspacing="0">
+									    <thead>
+									        <tr>
+									            <th>Tên môn học</th>
+									            <th>Mã môn học</th>
+									            <th></th>
+									        </tr>
+									    </thead>
+									    <tbody>
+									    	<tr ng-repeat="monhoc in dataMonHoc">
+									    		<td>{{ monhoc.tenmonhoc }}</td>
+									    		<td>{{ monhoc.mamonhoc }}</td>
+									    		<td>
+									    			<button type="button" class="btn btn-primary btn-xs">Sửa</button>
+						                			<button type="button" class="btn btn-primary btn-xs" ng-click="delMonHoc(monhoc)">Xoá</button>
+									    		</td>
+									    	</tr>
+									    </tbody>
+								    </table>
+						        </div>
+						    </div>
+						</div>
+
+						<div class="panel panel-success">
+						    <div class="panel-heading">
+						        <a data-toggle="collapse" href="#collapse2">Thêm deadline</a>
+						    </div>
+						    <div id="collapse2" class="panel-collapse collapse">
+						        <div class="panel-body">
+						            <form>
+						                <div class="form-group">
+						                    <label for="title">Tiêu đề:</label>
+						                    <input type="text" class="form-control" ng-model="newTieudeDeadline">
+						                </div>
+						                <div class="form-group">
+						                    <label for="content">Nội dung:</label>
+						                    <textarea class="form-control" rows="5" ng-model="newNoiDungDeadline"></textarea>
+						                </div>
+						                <div class="form-group">
+						                    <label for="sel1">Môn:</label>
+						                    <select class="form-control" ng-model="newDeadLine_IdMonHoc">
+						                        <option ng-repeat="monhoc in dataMonHoc" value="{{ monhoc.$id }}">{{ monhoc.mamonhoc }}</option>
+						                    </select>
+						                </div>
+						                <div class="form-group">
+						                    <label for="link">Link nộp:</label>
+						                    <input type="text" class="form-control" ng-model="newLinknopDeadline">
+						                </div>
+						                <div class="row">
+						                    <div class="col-sm-6">
+						                        <div class="form-group">
+						                            <label for="link">Ngày nộp:</label>
+						                            <input type="text" class="form-control" ng-model="newNgaynopDeadline">
+						                        </div>
+						                    </div>
+						                    <div class="col-sm-6">
+						                        <div class="form-group">
+						                            <label for="link">Giờ nộp:</label>
+						                            <input type="text" class="form-control" ng-model="newGionopDeadline">
+						                        </div>
+						                    </div>
+						                </div>
+						                <button type="submit" class="btn btn-primary" ng-click="addDeadline()">Thêm</button>
+						                <button class="btn btn-warning">Hủy</button>
+						            </form>
+						        </div>
+						    </div>
+						</div>
+
+						<div ng-repeat="monhoc in dataMonHoc" ng-init="data=getFirebaseArray(RefDeadline, monhoc.$id)">
+						Môn: {{ monhoc.mamonhoc }}
+						<table class="table table-striped table-hover" width="100%" cellspacing="0">
+						    <thead>
+						        <tr>
+						            <th>Ngày</th>
+						            <th>Giờ</th>
+						            <th>Title</th>
+						            <th></th>
+						        </tr>
+						    </thead>
+						    <tbody>
+						        <tr ng-repeat="deadline in data">
+						            <td>{{ deadline.ngaynop }}</td>
+						            <td>{{ deadline.gionop }}</td>
+						            <td>{{ deadline.tieude }}</td>
+						            <td>
+						                <button type="button" class="btn btn-primary btn-xs">Sửa</button>
+						                <button type="button" class="btn btn-primary btn-xs" ng-click="delDeadline(data, deadline)">Xoá</button>
+						            </td>
+						        </tr>
+						    </tbody>
+						</table>
+						</div>
                         </div>
-                        <div class="pull-right">
-                            <button class="btn btn-default content-frame-right-toggle"><span class="fa fa-bars"></span></button>
-                        </div>
-                        <div class="pull-right" style="width: 100px; margin-right: 5px;">
-                            <select class="form-control select">
-                                <option>All</option>
-                                <option>NMLT</option>
-                                <option>NM CNTT 1</option>
-                                <option>AV 1</option>
-                                <option>AV 2</option>
-                            </select>
-                        </div>
-                        <div class="pull-right" style="margin-right: 5px;">Môn: </div>
                     </div>
-                    <div class="content-frame-right">
-                        <h4>Thêm Deadline:</h4>
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control push-down-10" placeholder="Tiêu đề" ng-model="newDeadLine_TieuDe"/>
-                                <textarea class="form-control push-down-10" id="new_task" rows="4" placeholder="Nội dung..." ng-model="newDeadLine_NoiDung"></textarea>
-                                <select class="form-control push-down-10 select" ng-model="newDeadLine_IdMonHoc">
-                                    <option value="">Chọn môn học</option>
-                                    <option ng-repeat="monhoc in dataMonHoc" value="{{ monhoc.$id }}">{{ monhoc.mamonhoc }}</option>
-                                   
-                                </select>
-                                <input type="text" class="form-control push-down-10" placeholder="Link nộp" ng-model="newDeadLine_LinkNop"/>
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="text" class="form-control" placeholder="Hạn nộp" id="newDeadLine_HanNop"/>
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                                <button class="btn btn-primary" id="add_new_task" ng-click="addDeadline()"><span class="fa fa-edit"></span> Add</button>
-                            </div>
-                        </form>
-
-                        <h4>Thêm môn:</h4>
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control push-down-10" placeholder="Tên môn" ng-model="newTenMonHoc"/>
-                                <input type="text" class="form-control push-down-10" placeholder="Mã môn" ng-model="newMaMonHoc"/>
-                                <button class="btn btn-primary" id="add_new_task" ng-click="addMonHoc()"><span class="fa fa-edit"></span> Add</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- END CONTENT FRAME TOP -->
-
-                    <!-- START CONTENT FRAME BODY -->
-                    <div class="content-frame-body content-frame-body-left">
-
-                        <div class="row push-up-10">
-                            <div class="tasks" id="tasks">
-                                <div class="task-item task-primary">
-                                    <div class="task-footer">
-                                        <div class="pull-left"><span class="fa fa-clock-o"></span> 15 giờ 34 phút - Nhập môn lập trình</div>
-                                        <div class="pull-right"><a href="https://courses.fit.hcmus.edu.vn/mod/assign/view.php?id=34755"><span class="fa fa-chain"></span></a></div>
-                                        <div class="pull-right"><a href="#"><span class="fa fa-edit"></span></a></div>
-                                    </div>
-                                    <div class="task-text">
-                                        <h3>Nộp bài tập lý thuyết tuần 3...</h3>
-                                        * Nội dung: bài tập 4.2, 4.4c, 4.4d và 4.5 trong slides 4.<br/>
-                                        <br/>
-                                        * Quy định:<br/>
-                                        - Bài tập lý thuyết thực hiện cá nhân.<br/>
-                                        - Bài nộp chỉ bao gồm các files mã nguồn (.h, .cpp, .c), xóa đi các thư mục và tập tin không cần thiết như: Debug, Release, ...<br/>
-                                        - Bài nộp nén thành 1 file duy nhất đặt tên BT&lt;STT tuần&gt;-&lt;MSSV&gt;.zip, ví dụ: sinh viên 1612001 sẽ nộp bài tập lý thuyết tuần 1 với tên file là BT1-1612001.zip.<br/>
-                                        - Các trường hợp giống bài nhau sẽ bị 0 điểm tất cả.<br/>
-                                        - Các trường hợp nộp bài trễ được thực hiện qua email cho giáo viên và sẽ bị trừ 1/2 số điểm.<br/>
-                                        - Hạn cuối: 23h55, thứ hai, ngày 14/11/2016.<br/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3>Đã quá hạn</h3>
-
-                            <div class="tasks" id="tasks_completed">
-                                <div class="task-item task-danger task-complete">
-                                    <div class="task-footer">
-                                        <div class="pull-left"><span class="fa fa-clock-o"></span> 15 giờ 34 phút - Nhập môn lập trình</div>
-                                        <div class="pull-right"><a href="https://courses.fit.hcmus.edu.vn/mod/assign/view.php?id=34755"><span class="fa fa-chain"></span></a></div>
-                                        <div class="pull-right"><a href="#"><span class="fa fa-edit"></span></a></div>
-                                    </div>
-                                    <div class="task-text">
-                                        <h3>Nộp bài tập lý thuyết tuần 3...</h3>
-                                        * Nội dung: bài tập 4.2, 4.4c, 4.4d và 4.5 trong slides 4.<br/>
-                                        <br/>
-                                        * Quy định:<br/>
-                                        - Bài tập lý thuyết thực hiện cá nhân.<br/>
-                                        - Bài nộp chỉ bao gồm các files mã nguồn (.h, .cpp, .c), xóa đi các thư mục và tập tin không cần thiết như: Debug, Release, ...<br/>
-                                        - Bài nộp nén thành 1 file duy nhất đặt tên BT&lt;STT tuần&gt;-&lt;MSSV&gt;.zip, ví dụ: sinh viên 1612001 sẽ nộp bài tập lý thuyết tuần 1 với tên file là BT1-1612001.zip.<br/>
-                                        - Các trường hợp giống bài nhau sẽ bị 0 điểm tất cả.<br/>
-                                        - Các trường hợp nộp bài trễ được thực hiện qua email cho giáo viên và sẽ bị trừ 1/2 số điểm.<br/>
-                                        - Hạn cuối: 23h55, thứ hai, ngày 14/11/2016.<br/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END CONTENT FRAME BODY -->
-
                 </div>
-                <!-- END CONTENT FRAME -->
-</div>
-
-<script type="text/javascript">
-$(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-</script>
+				 <div id="modal1" class="modal" role="dialog">
+				    <div class="modal-content">
+				        <div class="modal-body">
+				            <form>
+				                <div class="form-group">
+				                    <label for="title">Tiêu đề:</label>
+				                    <input type="text" class="form-control" id="title">
+				                </div>
+				                <div class="form-group">
+				                    <label for="content">Nội dung:</label>
+				                    <textarea class="form-control" rows="5" id="content"></textarea>
+				                </div>
+				                <div class="form-group">
+				                    <label for="sel1">Môn:</label>
+				                    <select class="form-control" id="sel1">
+				                        <option>CNTT1</option>
+				                        <option>AV2</option>
+				                        <option>AV1</option>
+				                        <option>NMLT</option>
+				                    </select>
+				                </div>
+				                <div class="form-group">
+				                    <label for="link">Link nộp:</label>
+				                    <input type="text" class="form-control" id="link">
+				                </div>
+				                <div class="row">
+				                    <div class="col-sm-6">
+				                        <div class="form-group">
+				                            <label for="link">Ngày nộp:</label>
+				                            <input type="text" class="form-control" id="day">
+				                        </div>
+				                    </div>
+				                    <div class="col-sm-6">
+				                        <div class="form-group">
+				                            <label for="link">Giờ nộp:</label>
+				                            <input type="text" class="form-control" id="time">
+				                        </div>
+				                    </div>
+				                </div>
+				                <button type="submit" class="btn btn-primary">Sửa</button>
+				                <button class="btn btn-warning">Hủy</button>
+				            </form>
+				        </div>
+    				</div>
+				</div>
+            </div>

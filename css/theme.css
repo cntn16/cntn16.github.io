@@ -1,0 +1,30 @@
+.toc {
+    display: inline-block;
+    background-color: #f7f7f9;
+}
+
+#page-wrapper {
+  padding: 0 5px;
+}
+
+@keyframes change-background {
+  0% { background-color: #ddd; }
+  100% { background-color: #bbb; }
+}
+.head-btn {
+    padding: 4px 12px;
+    border-radius: 3px;
+    background-color: #ddd;
+}
+.head-btn:hover {
+    animation: change-background 0.2s;
+    background-color: #bbb;
+    cursor: pointer;
+}
+.nav li {
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
+}
